@@ -1,0 +1,30 @@
+//just cp -r config-example config.js
+
+const env = process.env.NODE_ENV || 'dev'
+
+const config = () => {
+    switch (env) {
+        case 'dev':
+            return{
+                db: 'mongodb+srv://<USER>:<PASSWORD>@cluster0-imlcg.mongodb.net/test?retryWrites=true&w=majority',
+                jwt: '<JWT-HASH>',
+                expiration: '7d' // expiration time of jwt
+            }
+        case 'hml':
+            return{
+                db: 'mongodb+srv://<USER>:<PASSWORD>@cluster0-imlcg.mongodb.net/test?retryWrites=true&w=majority',
+                jwt: '<JWT-HASH>',
+                expiration: '7d'
+            }
+        case 'prod':
+            return{
+                db: 'mongodb+srv://<USER>:<PASSWORD>@cluster0-imlcg.mongodb.net/test?retryWrites=true&w=majority',
+                jwt: '<JWT-HASH>',
+                expiration: '7d'
+            }
+    }
+}
+
+console.log(`Starting API on ${env.toUpperCase()}`)
+
+module.exports = config()
